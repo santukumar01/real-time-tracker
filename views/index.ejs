@@ -14,17 +14,36 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
+    <!-- Display connection count -->
+    <h1>Active Connections: <%= count_connection %></h1>
+
+    <!-- Leaflet Map container -->
     <div id="map"></div>
+    
+    <!-- Leaflet and Socket.IO scripts -->
     <script
       src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
       integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
       crossorigin=""
     ></script>
+
     <script
       src="https://cdn.socket.io/4.7.5/socket.io.min.js"
       integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO"
       crossorigin="anonymous"
     ></script>
+
+    <!-- Custom JavaScript file -->
     <script src="/js/script.js"></script>
+
+    <script>
+      // Initialize socket.io client
+      const socket = io();
+
+      // Update connection count in real-time
+      socket.on("update-connection-count", (count) => {
+        document.querySelector("h1").textContent = `Active Connections: ${count}`;
+      });
+    </script>
   </body>
 </html>

@@ -3,47 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
     <link
       rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-      crossorigin=""
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css"
+      integrity="sha512-Zcn6bjR/8RZbLEpLIeOwNtzREBAJnUKESxces60Mpoj+2okopSAcSUIUOseddDm0cxnGQzxIR7vJgsLZbdLE3w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
-
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Tracker</title>
   </head>
   <body>
-    <!-- Display connection count -->
-    <h1>Active Connections: <%= count_connection %></h1>
-
-    <!-- Leaflet Map container -->
     <div id="map"></div>
-    
-    <!-- Leaflet and Socket.IO scripts -->
-    <script
-      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-      crossorigin=""
-    ></script>
 
     <script
-      src="https://cdn.socket.io/4.7.5/socket.io.min.js"
-      integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO"
+      src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"
+      integrity="sha512-BwHfrr4c9kmRkLw6iXFdzcdWV/PGkVgiIyIWLLlTSXzWQzxuSg4DiQUCpauz/EWjgk5TYQqX/kvn9pG1NpYfqg=="
       crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     ></script>
-
-    <!-- Custom JavaScript file -->
+    <script src="socket.io/socket.io.js"></script>
     <script src="/js/script.js"></script>
-
-    <script>
-      // Initialize socket.io client
-      const socket = io();
-
-      // Update connection count in real-time
-      socket.on("update-connection-count", (count) => {
-        document.querySelector("h1").textContent = `Active Connections: ${count}`;
-      });
-    </script>
   </body>
 </html>
